@@ -1,0 +1,10 @@
+ThunderstormAlert:
+  help_message:
+  success_set_interval:
+  success_set_cooldown:
+  start_weather_check:
+  weather_check_is_running:
+  stop_weather_check:
+  weather_check_is_not_running:
+  error:
+    fail_to_load_config:

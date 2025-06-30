@@ -1,0 +1,8 @@
+{
+    "id": "thunderstorm_alert",
+    "version": "1.0.0",
+    "name": "Thunderstorm Alert",
+    "description": "Broadcast to all players when thunderstorm occurs",
+    "author": "Elec glacier",
+    "link": "https://github.com/Elec-Glacier/ThunderstormAlert"
+}
