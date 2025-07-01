@@ -88,7 +88,7 @@ def periodic_weather_check(server):
     interval = parse_time_string(check_interval)
     while STATUS:
         time.sleep(interval)
-        server.execute_command('weather query')
+        server.execute('weather query')
 
 def get_help(source: CommandSource):
     source.reply(tr("help_message"))
