@@ -1,0 +1,24 @@
+ThunderstormAlert:
+  help_message:
+    §e「Thunderstorm Alert」:§r
+    §a!!thunder§r - 显示插件当前状态
+    §a!!thunder help§r - 显示本帮助信息
+    §a!!thunder interval <interval>§r - 设置天气查询周期间隔
+    §a!!thunder cooldown <cooldown>§r - 设置播报冷却时间
+    §a!!thunder start§r - 开始监控天气
+    §a!!thunder stop§r - 停止监控天气
+    
+    §e使用示例:§r
+    - §7!!thunder interval 10s§r - 每10秒检查一次天气
+    - §7!!thunder cooldown 15m§r - 播报后15分钟才会进行下一次可能的播报
+    - §7!!thunder start§r - 开始监控天气
+
+  success_set_interval: §a成功设置监控时间间隔
+  success_set_cooldown: §a成功设置播报冷却时间
+  start_weather_check: §a开始监控天气
+  weather_check_is_running: §a正在监控天气
+  stop_weather_check: §a停止监控天气
+  weather_check_is_not_running: §a未在监控天气
+  error:
+    fail_to_load_config: §c未正常加载配置文件
+    interval_too_short: §c时间间隔太短

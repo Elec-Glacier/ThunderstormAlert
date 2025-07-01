@@ -1,0 +1,24 @@
+ThunderstormAlert:
+  help_message:
+    §e「Thunderstorm Alert」:§r
+    §a!!thunder§r - Show plugin status
+    §a!!thunder help§r - Display this help message
+    §a!!thunder interval <interval>§r - Set weather check interval
+    §a!!thunder cooldown <cooldown>§r - Set alert cooldown period
+    §a!!thunder start§r - Start weather monitoring
+    §a!!thunder stop§r - Stop weather monitoring
+
+    §eUsage Examples:§r
+    - §7!!thunder interval 10s§r - Check weather every 10 seconds
+    - §7!!thunder cooldown 15m§r - Only alert once every 15 minutes
+    - §7!!thunder start§r - Start monitoring weather
+
+  success_set_interval: §aSuccessfully set monitoring interval
+  success_set_cooldown: §aSuccessfully set broadcast cooldown
+  start_weather_check: §aStarted monitoring weather
+  weather_check_is_running: §aWeather monitoring is active
+  stop_weather_check: §aStopped monitoring weather
+  weather_check_is_not_running: §aWeather monitoring is not active
+  error:
+    fail_to_load_config: §cFailed to load config file
+    interval_too_short: §cInterval is too short

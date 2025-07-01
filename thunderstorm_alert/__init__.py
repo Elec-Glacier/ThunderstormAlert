@@ -1,14 +1,15 @@
-from mcdreforged.api.all import *
 import re
 import time
 import json
+
+from mcdreforged.api.all import *
 
 def tr(key, *args):
     return ServerInterface.get_instance().tr(f"ThunderstormAlert.{key}", *args)
 
 def command_register(server: PluginServerInterface):
     builder = SimpleCommandBuilder()
-    builder.command('!!thunder', get_help)
+    builder.command('!!thunder', get_status)
     builder.command('!!thunder help', get_help)
     builder.command('!!thunder interval <interval>', set_interval)
     builder.command('!!thunder cooldown <cooldown>', set_cooldown)
@@ -35,7 +36,7 @@ class Config(Serializable):
         with open('./config/ThunderstormAlert/config.json', 'w', encoding='utf-8') as f:
             json.dump(dict_config, f, ensure_ascii=False, indent=4)
 
-STATUS = False
+STATUS = True
 
 messages = "§c雷暴来了§r"
 check_interval = "20s"
@@ -63,13 +64,13 @@ def on_load(server: PluginServerInterface, old):
 
     last_alert_time = time.time()
 
-    periodic_weather_check()
+    periodic_weather_check(server)
 
 def get_config():
     global config
     return config.check_interval, config.cooldown, config.message
 
-def parse_time_string(time) -> int:
+def parse_time_string(time):
     time_units = {
         's': 1,
         'm': 60,
@@ -77,13 +78,12 @@ def parse_time_string(time) -> int:
     }
     match = re.match(r'(\d+)([smh])', time)
     if not match:
-        ServerInterface.get_instance().logger.error(f"{tr('error.interval_too_short')}{time}")
+        ServerInterface.get_instance().logger.error(f"{tr('error.interval_too_short')}:{time}")
     number, unit = match.groups()
-    interval_seconds = int(number) * time_units[unit]
-    return interval_seconds
+    return int(number) * time_units[unit]
 
 @new_thread
-def periodic_weather_check(server: PluginServerInterface):
+def periodic_weather_check(server):
     global STATUS,check_interval
     interval = parse_time_string(check_interval)
     while STATUS:
@@ -139,6 +139,6 @@ def get_status(source: CommandSource):
     else:
         source.reply(tr("weather_check_is_not_running"))
     source.reply(f"""
-        Check interval: {config.check_interval}\n
-        Cooldown: {config.cooldown}\n
+        Check interval: {config.check_interval}
+        Cooldown: {config.cooldown}
     """)
